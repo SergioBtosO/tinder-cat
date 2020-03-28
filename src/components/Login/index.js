@@ -7,7 +7,7 @@ import {
 export const Login = () => (
     <div className="login">
         <form>
-            <img src={Logo} />
+            <img src={Logo} alt=''/>
             <div className="input-custom">
                 <label>Email address</label>
                 <input type="email" />

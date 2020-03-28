@@ -1,9 +1,11 @@
 import React from 'react'
-
+import {
+    Link
+} from 'react-router-dom'
 export const Menu = () => (
     <nav className="menu">
         <ul>
-            <a href="#">
+            <a href="#" >
                 <li>
                     <ion-icon name="logo-octocat"></ion-icon>
                     <p>Home</p>
@@ -21,12 +23,12 @@ export const Menu = () => (
                     <p>Help</p>
                 </li>
             </a>
-            <a href="#">
+            <Link to="./login">
                 <li>
                     <ion-icon name="log-out"></ion-icon>
                     <p>Close session</p>
                 </li>
-            </a>
+            </Link>
         </ul>
     </nav>
 )
