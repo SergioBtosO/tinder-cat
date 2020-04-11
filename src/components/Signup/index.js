@@ -22,7 +22,7 @@ export const Signup = () => (
         </div> 
         <div className="input-custom">
             <label>Password</label>
-            <input name="Password" placeholder="Password" type="password" />
+            <input type="password" />
         </div> 
         <div className="input-custom">
             <label>Sexo</label>
@@ -35,12 +35,11 @@ export const Signup = () => (
                  Hembra</label>
             </div>
         </div>                            
-        <br /><br />
         <Link to="./login">
             <div className="button-primary">
                 <input type="button" value="Signup" />
             </div>
-        </Link>                                                                  
+        </Link>                                                               
     </form>
 </div>
 )

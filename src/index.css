@@ -301,12 +301,34 @@ body {
   opacity: 1;
 }
 
-.signup-link {
-  color: #666;
+.signup{
+  width: 300px;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  /*padding: 20px;*/
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
   font-family: 'Lato';
 }
-.signup-link a {
-  margin-left: 15px;
-  font-weight: bold;
-  color: #9e3bec;
+
+.signup form{
+  margin: 30px 20px;
+  padding: 0px;
 }
+
+.input-radio{
+  margin: 15px 0; 
+}
+
+.input-radio label{
+  width: 50%;
+  text-align: left !important;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.input-radio input {
+  width: 50%;
+  background: #f2f2f2;
+} 
