@@ -6,7 +6,7 @@ export const Interests = () => {
 
     return (
         <div className="interest-container">
-            <h3> Interest List </h3>
+            <h2> Interest List </h2>
             <hr />
             <div className="interests-box">
                 {

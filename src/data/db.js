@@ -59,3 +59,15 @@ export const INTERESTS = [
         status: true
     }
 ]
+
+export const MATCHES = [
+    {
+        username: 'Muñeca',
+        image:'https://t1.ea.ltmcdn.com/es/images/3/8/6/por_que_los_gatos_lloran_23683_600.jpg'
+    },
+    {
+        username:'Lucy',
+        image:'https://t1.ea.ltmcdn.com/es/images/2/8/4/por_que_los_gatos_maullan_24482_600.jpg'
+    },
+]
+
