@@ -9,8 +9,18 @@ export const ProfileContextStore = ({ children }) => {
     const [ profilePanel, setProfilePanel ] = useState(initialState)
 
     useEffect( () => {
-        const showState = window.innerWidth > 768 //true si se cumple > 768
-        setProfilePanel(showState)
+
+        const handlerResize = () => {
+            const showState = window.innerWidth > 768
+            setProfilePanel(showState)
+        }
+
+        window.addEventListener('resize', handlerResize)
+        console.log('render here')
+        handlerResize()
+
+        return () => window.removeEventListener('resize', handlerResize)
+
     }, [])
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from '../../Profile/ProfileDetail/Avatar';
+import { Avatar } from '../../Profile/components/Avatar';
 
 export const Matches = () => (
     <div className="matches">

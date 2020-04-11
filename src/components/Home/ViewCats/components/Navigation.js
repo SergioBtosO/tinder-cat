@@ -1,19 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavigationIcon } from './Navigation-icon'
 import { Couple } from './Couple'
+import { CAT_LIST } from '../../../../data/db'
 
-export const Navigation = () => (
-    <div className="navigation">
-        <div>
-            <NavigationIcon name="arrow-undo" />
+export const Navigation = () => {
+
+    ///acá pondremos mas funciones // cat = CAT_LIST[0] no funciona tan asi
+    //constructor
+    const [ indexCat, setIndexCat ] = useState(0) //indexCat = 0
+    const [ cat, setCat ] = useState({})
+
+    const goBack = () => {
+        let newIndex = indexCat === 0 ? CAT_LIST.length - 1 : indexCat - 1
+        setIndexCat(newIndex)
+    }
+
+    const goNext = () => {
+        let newIndex = indexCat === CAT_LIST.length - 1 ? 0 : indexCat + 1
+        setIndexCat(newIndex)
+    }
+
+    //componentDidMount / componentDidUpdate
+    useEffect( () => {
+        setCat(CAT_LIST[indexCat])
+
+        return () => { } //saneamiento!
+    }, [indexCat])
+
+    //renderizar
+    return (
+        <div className="navigation">
+            <NavigationIcon onPress={ goBack } name="arrow-undo" />
+            <Couple
+                image={ cat.image }
+                username={ cat.username }
+                description={ cat.description }
+            />
+            <NavigationIcon onPress={ goNext } name="arrow-redo" />
         </div>
-        <Couple
-            image="https://www.hola.com/imagenes/estar-bien/20180926130368/como-saber-si-mi-gata-esta-en-celo/0-603-746/como-saber-si-mi-gata-esta-en-celo-ok-t.jpg"
-            username="@princess"
-            description="Soy tierna, me gusta cazar pajaros y comer galletas de la suerte. Da like para que salgamos a cazar!"
-        />
-        <div>
-            <NavigationIcon name="arrow-redo" />
-        </div>
-    </div>
-)
+    )
+}

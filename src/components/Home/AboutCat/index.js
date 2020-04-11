@@ -1,12 +1,24 @@
-import React from 'react';
-import { Preferencias } from './AboutCatDetail/Preferencias';
-import { Intereses } from './AboutCatDetail/Intereses';
-import { Matches } from './AboutCatDetail/Matches';
+import React, { useContext } from 'react'
+import { Interests } from './components/Interests'
+import { AboutContext } from '../../../contexts/AboutContext'
 
-export const AboutCat = () => (
-    <div className="about-cat">
-        <Preferencias />
-        <Intereses />
-        <Matches />
-    </div>
-);
+const showAboutPanel = {
+    display: 'block'
+}
+
+const hideAboutPanel = {
+    display: 'none'
+}
+
+export const AboutCat = () => {
+
+    const { aboutPanel } = useContext(AboutContext)
+
+    return (
+        <div style={ aboutPanel ? showAboutPanel: hideAboutPanel } className="about-cat">
+            About cat
+            <br /><br />
+            <Interests />
+        </div>
+    )
+}
