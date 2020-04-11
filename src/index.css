@@ -28,11 +28,13 @@ body {
   flex: 16;
   background: #fff;
   min-height: 400px;
+  
 }
 
 .about-cat{
   flex: 9;
   background: #f1f1f1;
+  overflow: scroll;
 }
 
 .interest-container{
