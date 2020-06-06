@@ -1,4 +1,5 @@
 import React from 'react';
+import { PreferenciasAge } from './PreferencesAge';
 
 export const Preferencias = () => (
     <div>
@@ -7,7 +8,8 @@ export const Preferencias = () => (
         <hr />
         <p><input type="checkbox"  />Hembra</p>
         <p><input type="checkbox" />Macho</p> 
-        <p>Edad:  Min <input type="range"/>  Max <input type="range"/></p>
+        <p>Edad:</p>
+        <PreferenciasAge />
     </form>
     </div>
 );
