@@ -45,7 +45,7 @@ export const Login = () => {
     return (
         <div className="login">
             <form onSubmit={ loginHandler }>
-                <img src={Logo} />
+                <img src={Logo} alt="" />
                 <div className="input-custom">
                     <label>Email address</label>
                     <input value={ email } onChange={ (e) => setEmail(e.target.value) } type="email" />
