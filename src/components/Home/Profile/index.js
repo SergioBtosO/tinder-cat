@@ -12,14 +12,14 @@ const hideProfilePanel = {
     display: 'none'
 }
 
-export const Profile = () => {
+export const Profile = ({ image, nick, bio }) => {
 
     const { profilePanel } = useContext(ProfileContext)
 
     return (
         <div style={ profilePanel ? showProfilePanel: hideProfilePanel } className="profile">
-            <Avatar username='Copito' image='https://i.pinimg.com/564x/8a/df/cf/8adfcf0b90aef150f56374c3dda25ede.jpg' />
-            <Bio />
+            <Avatar nick={ nick } image= { image } />
+            <Bio bio={ bio }/>
             <Menu />
         </div>
     )
