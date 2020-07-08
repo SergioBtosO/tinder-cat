@@ -14,7 +14,6 @@ export const Interests = ({ interestsCat }) => {
         try {
             const endpoint = HTTP_CONSTANTS.interests
             const response = await requestHttp('get', endpoint)
-            console.log('Interests: ',response )
             const { interestsList } = response
             setInterestList(interestsList)
         } catch (err) {

@@ -7,9 +7,6 @@ const headersConfig = (bearerToken) => {
         'Accept': 'application/json',
         'Authorization': `Bearer ${bearerToken}`
     }
-
-    console.log(defaultHeaders)
-
     return defaultHeaders
 }
 

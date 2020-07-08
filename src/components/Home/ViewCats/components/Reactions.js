@@ -6,37 +6,40 @@ import { requestHttp } from '../../../../config/http-server'
 
 export const Reactions = () => {
     
-    const {catInteraction} = useContext(CatInteractionContext)
+    const {catInteraction,catsInteraction,setCatsInteraction} = useContext(CatInteractionContext)
 
-
-    const likedCat = async () => {
+    const likedCat = () => {
         try {
-            
             const endpoint = HTTP_CONSTANTS.liked
-            const response = await requestHttp('post', endpoint,{catLiked:{cat_id:catInteraction}})
-            console.log(response)
-
+            interactionCat (endpoint)
         } catch (err) {
             console.error(err)
         }
     }
 
-    const unlikedCat = async () => {
+    const unlikedCat = () => {
+            const endpoint = HTTP_CONSTANTS.unliked
+            interactionCat (endpoint)        
+    }
+
+    const interactionCat = async (endpoint) => {
         try {
             
-            const endpoint = HTTP_CONSTANTS.unliked
-            const response = await requestHttp('post', endpoint,{catUnliked:{cat_id:catInteraction}})
-            console.log(response)
+            await requestHttp('post', endpoint,{catLiked:{cat_id:catInteraction}})
+            const listCat = catsInteraction.filter (cat => cat._id !== catInteraction)            
+            setCatsInteraction(listCat)
+            
         } catch (err) {
             console.error(err)
         }
     }
-
-
     return (
     <div className="reactions">
-        <ReactionIcon name="heart-dislike" onPress={unlikedCat}/>
-        <ReactionIcon color="#C800AA" name="heart" onPress={likedCat} />
+        { catsInteraction.length > 0 && <>
+            <ReactionIcon name="heart-dislike" onPress={unlikedCat}/>
+            <ReactionIcon color="#C800AA" name="heart" onPress={likedCat} />
+            </>
+        }
     </div>
     )
 }

@@ -18,7 +18,6 @@ export const Home = () => {
             const { status, cat } = response
             if (status === 1) {
                 setCat(cat)
-                console.log(cat)
             } else {
                unauthorized()  
             }
