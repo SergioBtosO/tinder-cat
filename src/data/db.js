@@ -1,5 +1,10 @@
 export const CAT_LIST = [
     {
+        nick:'Sin resultados',
+        image:'https://us.123rf.com/450wm/yupiramos/yupiramos1608/yupiramos160803744/60650487-mascota-de-la-silueta-del-gato-dom%C3%A9stico-icono-ilustraci%C3%B3n-del-vector-del-icono.jpg',
+        bio:''
+    },
+    /*{
         username: 'princess',
         image: 'https://www.hola.com/imagenes/estar-bien/20180926130368/como-saber-si-mi-gata-esta-en-celo/0-603-746/como-saber-si-mi-gata-esta-en-celo-ok-t.jpg',
         description: 'Soy tierna, me gusta cazar pajaros y comer galletas de la suerte. Da like para que salgamos a cazar!'
@@ -18,7 +23,7 @@ export const CAT_LIST = [
         username: 'condesa',
         image: 'https://www.significados-nombres.com/wp-content/uploads/2017/01/nombres-para-gatas.jpg',
         description: 'Soy tierna, me gusta cazar pajaros y comer galletas de la suerte. Da like para que salgamos a cazar!'
-    }
+    }*/
 ]
 
 export const INTERESTS = [

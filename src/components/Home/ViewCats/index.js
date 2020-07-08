@@ -5,8 +5,9 @@ import { Reactions } from './components/Reactions'
 
 export const ViewCats = () => (
     <div className="view-cats">
-        <Topbar />
-        <Navigation />
-        <Reactions />
+            <Topbar />
+            <Navigation />
+            <Reactions />
+        
     </div>
 )

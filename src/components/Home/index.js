@@ -3,6 +3,7 @@ import { Profile } from './Profile'
 import { ViewCats } from './ViewCats'
 import { AboutCat } from './AboutCat'
 import { ProfileContextStore } from '../../contexts/ProfileContext'
+import { CatInteractionContextStore } from '../../contexts/CatInteractionContext'
 import { HTTP_CONSTANTS } from '../../config/http-constants'
 import { requestHttp } from '../../config/http-server'
 
@@ -17,17 +18,20 @@ export const Home = () => {
             const { status, cat } = response
             if (status === 1) {
                 setCat(cat)
+                console.log(cat)
             } else {
-                unauthorized()
+               unauthorized()  
             }
         } catch (err) {
-            unauthorized()
+           
+        unauthorized()
+
         }
     }
 
     const unauthorized = () => {
-        sessionStorage.removeItem('_TOKEN_')
-        window.location.href = '/login'
+     sessionStorage.removeItem('_TOKEN_')
+     window.location.href = '/login'
     }
 
     useEffect (() => {
@@ -39,15 +43,17 @@ export const Home = () => {
     return (
         <div className="home-page">
             <ProfileContextStore>
+            <CatInteractionContextStore>
                 {
                     Object.keys(cat).length // false == 0
                     ? <Fragment>
                         <Profile bio={cat.bio} nick={cat.nick} image={cat.image} />
                         <ViewCats />
-                        <AboutCat interest={ cat.interests } preferences={ cat.preferences } />
+                        <AboutCat interests={ cat.interests } preferences={ cat.preferences } />
                     </Fragment>
                     : <p>Loading app...</p>
                 }
+            </CatInteractionContextStore>
             </ProfileContextStore>
         </div>
     )

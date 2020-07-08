@@ -28,7 +28,7 @@ export const Menu = () => {
                     <p>Help</p>
                 </li>
             </Link>
-            <Link to="./login"  onClick={borrarSesion()} >
+            <Link to="./login"  onClick={borrarSesion} >
                 <li>
                     <ion-icon name="log-out"></ion-icon>
                     <p>Close session</p>
