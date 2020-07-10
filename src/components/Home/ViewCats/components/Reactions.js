@@ -6,12 +6,15 @@ import { requestHttp } from '../../../../config/http-server'
 
 export const Reactions = () => {
     
-    const {catInteraction,catsInteraction,setCatsInteraction} = useContext(CatInteractionContext)
+    const {catInteraction} = useContext(CatInteractionContext)
+    const {setNextCatInteraction} = useContext(CatInteractionContext)
+    const {existCatsList} = useContext(CatInteractionContext)
 
     const likedCat = () => {
         try {
             const endpoint = HTTP_CONSTANTS.liked
-            interactionCat (endpoint)
+            const data = {catLiked:{cat_id:catInteraction._id}}
+            interactionCat (endpoint,data)
         } catch (err) {
             console.error(err)
         }
@@ -19,26 +22,30 @@ export const Reactions = () => {
 
     const unlikedCat = () => {
             const endpoint = HTTP_CONSTANTS.unliked
-            interactionCat (endpoint)        
+            const data = {catUnliked:{cat_id:catInteraction._id}}
+            interactionCat (endpoint,data)        
     }
 
-    const interactionCat = async (endpoint) => {
+    const reloadCats = () => {
+        setNextCatInteraction(true)       
+}
+
+    const interactionCat = async (endpoint,data) => {
         try {
-            
-            await requestHttp('post', endpoint,{catLiked:{cat_id:catInteraction}})
-            const listCat = catsInteraction.filter (cat => cat._id !== catInteraction)            
-            setCatsInteraction(listCat)
-            
+            await requestHttp('post', endpoint,data)
+            setNextCatInteraction(true)            
         } catch (err) {
             console.error(err)
         }
     }
     return (
     <div className="reactions">
-        { catsInteraction.length > 0 && <>
+        { existCatsList ? 
+        <>
             <ReactionIcon name="heart-dislike" onPress={unlikedCat}/>
             <ReactionIcon color="#C800AA" name="heart" onPress={likedCat} />
-            </>
+        </>
+        :   <ReactionIcon name="refresh" onPress={reloadCats}/>
         }
     </div>
     )

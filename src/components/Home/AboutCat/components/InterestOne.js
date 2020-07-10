@@ -1,6 +1,7 @@
 import React,{useState}  from 'react'
 import { HTTP_CONSTANTS } from '../../../../config/http-constants'
 import { requestHttp } from '../../../../config/http-server'
+//import { CatInteractionContext } from './../../../../contexts/CatInteractionContext'
 
 const fillStyle = {
     background: '#07ABA0',
@@ -10,15 +11,15 @@ const fillStyle = {
 
 export const InterestOne = ({ interestId, name , status = false, modifyStatus }) => {
 
+    //const {catsInteraction,setCatInteraction} = useContext(CatInteractionContext)
+
     const [statusInterest,setStatusInterest] = useState(status)
 
-    
     const changeStatus = () => {
     
     updateInterests(statusInterest?'delete':'post')
     setStatusInterest(!statusInterest)
-    console.log(interestId)
-    
+
     }
 
     const updateInterests = async (method) => {

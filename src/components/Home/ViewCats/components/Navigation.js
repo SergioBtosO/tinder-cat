@@ -1,73 +1,107 @@
 import React, { useState, useEffect,useContext  } from 'react'
 import { NavigationIcon } from './Navigation-icon'
 import { Couple } from './Couple'
-//import { CAT_LIST } from '../../../../data/db'
-//import { HTTP_CONSTANTS } from '../../../../config/http-constants'
-//import { requestHttp } from '../../../../config/http-server'
+import { HTTP_CONSTANTS } from '../../../../config/http-constants'
+import { requestHttp } from '../../../../config/http-server'
 import { CatInteractionContext } from './../../../../contexts/CatInteractionContext'
 
 export const Navigation = () => {
 
-    const {catsInteraction,setCatInteraction} = useContext(CatInteractionContext)
+    const {catInteraction,setCatInteraction} = useContext(CatInteractionContext)
+    const {nextCatInteraction, setNextCatInteraction} = useContext(CatInteractionContext)
+    const {existCatsList,setExistCatsList} = useContext(CatInteractionContext)
 
     ///acá pondremos mas funciones // cat = CAT_LIST[0] no funciona tan asi
     //constructor
-    //const [ catList, setCatList] = useState([])
-    const [ indexCat, setIndexCat ] = useState(0)
-    const [ cat, setCat ] = useState({})
+    const [ catList, setCatList] = useState([])
+    const [ indexCat, setIndexCat ] = useState(-1)
+    const [ cat, setCat ] = useState(false)
+
+    const getCats = async () => {
+        try {
+            const endpoint = HTTP_CONSTANTS.cats
+            const response = await requestHttp('get', endpoint)
+            const { cats } = response
+            
+            if(cats && cats.length >0) {
+            setCatList(cats)
+            setIndexCat(0)
+            setExistCatsList(true)
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    }
     
     const goBack = () => {
-        let newIndex = indexCat === 0 ? catsInteraction.length - 1 : indexCat - 1
+        let newIndex = indexCat === 0 ? catList.length - 1 : indexCat - 1
         setIndexCat(newIndex)
     }
 
     const goNext = () => {
-        let newIndex = indexCat === catsInteraction.length - 1 ? 0 : indexCat + 1
+        let newIndex = indexCat === catList.length - 1 ? 0 : indexCat + 1
         setIndexCat(newIndex)
-        console.log('next: ',newIndex)
     }
 
-    useEffect( () => {
-        if(catsInteraction.length>0){
-            console.log('getCats: catsInteraction',catsInteraction,indexCat,catsInteraction.length)
-            goNext()
-        } else{
-            setIndexCat(-1) 
+    useEffect(() => {
+        if(nextCatInteraction)
+        {
+            setNextCatInteraction(false)
+            if (catList && catList.length >0){
+                const newListCat = catList.filter( cat => cat._id !== catInteraction._id)
+                setCatList(newListCat)
+                if(newListCat && newListCat.length >0)
+                {
+                    if( indexCat === newListCat.length)
+                    {
+                        setIndexCat(0)
+                    }else{
+                        
+                        setCat(newListCat[indexCat])
+                        setCatInteraction(newListCat[indexCat])
+                    }
+                    
+                }else{
+                    setCat(false)
+                    setIndexCat(-1)
+                    setExistCatsList(false)
+                }
+                
+            }else{
+                getCats()
+            }
+           
         }
-        return () => { } //saneamiento!
+        return () => { }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [catsInteraction])
+    }, [nextCatInteraction])
 
     useEffect(() => {
-        console.log('indexcat ',catsInteraction,indexCat)
-        if(catsInteraction.length>0)
+        if(catList && catList.length>0)
         {
-            setCat(catsInteraction[indexCat])
-            setCatInteraction(catsInteraction[indexCat]._id)
+            setCat(catList[indexCat])
+            setCatInteraction(catList[indexCat])
+            console.log('index',indexCat,catList)
         } 
       return () => { } //saneamiento!
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [indexCat])
 
+    useEffect(() => {
+        getCats()
+        return () => { }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     //renderizar
     return (
         <div className="navigation">
-                {catsInteraction.length>0 ?
-                <>
-                    <NavigationIcon onPress={ goBack } name="arrow-undo" />
-                    <Couple
-                        image={ cat.image }
-                        nick={ cat.nick }
-                        bio={cat.bio}
-                    />
-                    <NavigationIcon onPress={ goNext } name="arrow-redo" />
-                </>
-                    : <Couple
-                        image={'https://us.123rf.com/450wm/yupiramos/yupiramos1608/yupiramos160803744/60650487-mascota-de-la-silueta-del-gato-dom%C3%A9stico-icono-ilustraci%C3%B3n-del-vector-del-icono.jpg' }
-                        nick={'No_Resultados' }
-                        bio={ '' }
-                    />
-                }
+                    { existCatsList && <NavigationIcon onPress={ goBack } name="arrow-undo" /> }
+                    <Couple catSelect = { existCatsList ? cat : existCatsList }/> 
+                    { existCatsList && <NavigationIcon onPress={ goNext } name="arrow-redo" /> }
          </div>
+        
     )
 }

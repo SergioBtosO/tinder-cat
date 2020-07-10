@@ -1,13 +1,15 @@
 import React from 'react'
 
-export const Couple = ({ image, nick, bio }) => {
+import { CAT_LIST_EMPTY } from '../../../../data/db'
+export const Couple = ({ catSelect }) => {
 
-console.log( image, nick, bio)
     return (
     <div className="image-couple">
-        <img src={ image } alt='' />
-        <h3>@{ nick }</h3>
-        <p>{ bio }</p>
+        <img src={ catSelect ? catSelect.image : CAT_LIST_EMPTY} alt='' />
+        { catSelect && <>
+        <h3>@{ catSelect.nick }</h3>
+        <p>{ catSelect.bio }</p>
+        </>}
     </div>
     )
 }
