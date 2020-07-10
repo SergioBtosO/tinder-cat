@@ -3,7 +3,7 @@ import { Profile } from './Profile'
 import { ViewCats } from './ViewCats'
 import { AboutCat } from './AboutCat'
 import { ProfileContextStore } from '../../contexts/ProfileContext'
-import { CatInteractionContextStore } from '../../contexts/CatInteractionContext'
+import { AboutContextStore } from '../../contexts/AboutContext'
 import { HTTP_CONSTANTS } from '../../config/http-constants'
 import { requestHttp } from '../../config/http-server'
 
@@ -42,7 +42,7 @@ export const Home = () => {
     return (
         <div className="home-page">
             <ProfileContextStore>
-            <CatInteractionContextStore>
+            <AboutContextStore>
                 {
                     Object.keys(cat).length // false == 0
                     ? <Fragment>
@@ -52,7 +52,7 @@ export const Home = () => {
                     </Fragment>
                     : <p>Loading app...</p>
                 }
-            </CatInteractionContextStore>
+            </AboutContextStore>
             </ProfileContextStore>
         </div>
     )

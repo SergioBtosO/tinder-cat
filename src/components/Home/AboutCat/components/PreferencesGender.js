@@ -9,10 +9,7 @@ export const PreferencesGender = ({ gender, notifyChange }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return (
-        <div className="interest-container">
-            <h3>Preferences</h3>
-            <hr />
+    return (           
             <form className="form-preferences">
                 <label htmlFor="female">Female</label>
                 <input checked={ genderSelected === 'F' } onChange={ e => setGenderSelected(e.target.value) } name="gender" type="radio" value="F" />
@@ -20,6 +17,5 @@ export const PreferencesGender = ({ gender, notifyChange }) => {
                 <label htmlFor="male">Male</label>
                 <input checked={ genderSelected === 'M' } onChange={ e => setGenderSelected(e.target.value) } name="gender" type="radio" value="M" />
             </form>
-        </div>
     )
 }

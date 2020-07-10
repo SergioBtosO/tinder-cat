@@ -82,7 +82,6 @@ export const Navigation = () => {
         {
             setCat(catList[indexCat])
             setCatInteraction(catList[indexCat])
-            console.log('index',indexCat,catList)
         } 
       return () => { } //saneamiento!
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,9 +97,9 @@ export const Navigation = () => {
     //renderizar
     return (
         <div className="navigation">
-                    { existCatsList && <NavigationIcon onPress={ goBack } name="arrow-undo" /> }
+                    <NavigationIcon onPress={ goBack } name="arrow-undo" /> 
                     <Couple catSelect = { existCatsList ? cat : existCatsList }/> 
-                    { existCatsList && <NavigationIcon onPress={ goNext } name="arrow-redo" /> }
+                    <NavigationIcon onPress={ goNext } name="arrow-redo" /> 
          </div>
         
     )

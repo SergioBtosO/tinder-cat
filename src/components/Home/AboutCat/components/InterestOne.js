@@ -25,8 +25,8 @@ export const InterestOne = ({ interestId, name , status = false, modifyStatus })
     const updateInterests = async (method) => {
         try {
             const endpoint = HTTP_CONSTANTS.updateInterests
-            const response = await requestHttp(method, endpoint,{interestId})
-            console.log('response: ',response)
+            await requestHttp(method, endpoint,{interestId})
+
         } catch (err) {
             console.error(err)
         }

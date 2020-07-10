@@ -1,5 +1,4 @@
-export const CAT_LIST_EMPTY = 'https://us.123rf.com/450wm/yupiramos/yupiramos1608/yupiramos160803744/60650487-mascota-de-la-silueta-del-gato-dom%C3%A9stico-icono-ilustraci%C3%B3n-del-vector-del-icono.jpg'
-
+export const CAT_LIST_EMPTY = 'https://img2.freepng.es/20180622/xhs/kisspng-black-cat-silhouette-kitten-drawing-5b2d76c6206942.5429651015297061821328.jpg'
 export const INTERESTS = [
     {
         name: 'Cazar',

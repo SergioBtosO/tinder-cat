@@ -16,7 +16,6 @@ export const ProfileContextStore = ({ children }) => {
         }
 
         window.addEventListener('resize', handlerResize)
-        //console.log('render here')
         handlerResize()
 
         return () => window.removeEventListener('resize', handlerResize)

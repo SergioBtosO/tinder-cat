@@ -44,9 +44,11 @@ export const Preferences = ({ preferences}) => {
     }, [preferencesUpdated])
 
     return (
-        <>
+        <div className="preference-container">
+        <h3>Preferences</h3>
+        <hr />
         <PreferencesGender notifyChange={ prefGenderChangedHandler } gender={ preferences.gender } />
         <PreferencesAge notifyChange={ prefAgesChangedHandler } ageMax={ preferences.age_max } ageMin={ preferences.age_min } />
-        </>
+        </div>
     )
 }
