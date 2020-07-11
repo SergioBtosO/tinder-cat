@@ -54,13 +54,12 @@ body {
   font-weight: 500;
   margin: 10px 15px;
   text-align: center;
-  
 }
 
 .interest-one:hover {
   cursor: pointer;
 }
-.matches-container .matches-one{
+.matches-one{
   margin: 5px;
 }
 
@@ -75,10 +74,15 @@ body {
   
 }
 
-.matches-container .matches-box{
-  display: flex;
-  flex-wrap: wrap;
+.matches-container{
   margin: 5px;
+}
+
+.matches-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 8px;
 }
 
 .avatar { text-align: center; }
@@ -171,7 +175,6 @@ body {
   display: flex;
   align-items: center;
   padding: 10px 8px;
-  
 }
 
 .navigation-icon{

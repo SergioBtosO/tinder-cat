@@ -8,5 +8,6 @@ export const HTTP_CONSTANTS = {
     updateInterests: '/cats/interest',
     cats: '/cats/',
     liked: '/interactions/liked',
-    unliked: '/interactions/unliked'
+    unliked: '/interactions/unliked',
+    matches: '/cats/matches',
 }

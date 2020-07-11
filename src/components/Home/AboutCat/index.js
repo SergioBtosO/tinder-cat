@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { Interests } from './components/Interests'
 import { Preferences } from './components/Preferences'
 import { AboutContext } from '../../../contexts/AboutContext'
+import { Matches } from './components/Matches'
 
 const showAboutPanel = {
     display: 'block'
@@ -20,6 +21,7 @@ export const AboutCat = ({preferences, interests }) => {
         <div className="about-cat" style ={aboutPanel ? showAboutPanel: hideAboutPanel}>
             <Preferences preferences={ preferences } />
             <Interests interestsCat={ interests } />
+            <Matches />
         </div>
     )
 }
